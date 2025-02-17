@@ -2,9 +2,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 # Read in the data first and trim as necessary
-data1 = np.genfromtxt('Lab_3_G_Factor_Correction/R110_520nMEm_800V_5-5_Geoffrey.csv', delimiter = ',', skip_header = 1, skip_footer = 77, names = True)
+data1 = np.genfromtxt('Lab_3_G_Factor_Correction/R110_520nMEm_800V_5-5_Geoffrey.csv', delimiter = ',', skip_header = 1, skip_footer = 74, names = True)
 
 print(data1.dtype.names)
+print(len(data1['Wavelength_nm']))
 ma = 1/3*(data1["Intensity_au"] + 2 * data1["Intensity_au_1"])
 ma_Corrected = 1e-8 * ma ** 3 + 6e-6 * ma ** 2 - .0114 * ma + 3.6128
 

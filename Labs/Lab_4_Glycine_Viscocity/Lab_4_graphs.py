@@ -5,7 +5,10 @@ from matplotlib import pyplot as plt
 data1 = np.genfromtxt('Lab_4_Glycine_Viscocity/R110_gly_exc470_obs560_sl10,5_780V_gfactor_good.csv', delimiter = ',', skip_header = 1, skip_footer = 337, names = True)
 
 print(data1.dtype.names)
-print(np.average(data1["Intensity_au_4"])/np.average(data1["Intensity_au_3"]))
+index = np.argmin(np.abs(data1["Wavelength_nm"]-518))
+print(data1["Intensity_au_5"][116]/data1["Intensity_au_4"][116])
+print(index)
+# print(np.average(data1["Intensity_au_4"])/np.average(data1["Intensity_au_3"]))
 
 
 #creating figures

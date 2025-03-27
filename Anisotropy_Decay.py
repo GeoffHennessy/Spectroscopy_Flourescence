@@ -5,10 +5,19 @@ def ex_decay(t,alpha,T):
     y = 0.38 * alpha * np.exp(-t/T)
     return y
 
-x = np.linspace(0,2.5,1000)
-y1 = ex_decay(x,0.99,0.2)
-y2 = ex_decay(x,0.01,50)
-y_tot = y1 + y2
+# Setting initial conditions and lists
+alpha1 = 0.99
+alpha2 = 0.01 
+y_tot = []
+
+x = np.linspace(0.0,2.5,1000)
+for i in range(len(x)):
+    y1 = ex_decay(x[i],alpha1,0.2)
+    y2 = ex_decay(x[i],alpha2,50)
+    y_tot.append(y1+y2)
+
+    alpha1 = y1 / y_tot[i]
+    alpha2 = y2 / y_tot[i]
 
 fig = plt.figure(figsize = (10,6))
 ax = plt.subplot(111)
